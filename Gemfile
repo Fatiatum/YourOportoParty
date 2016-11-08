@@ -40,12 +40,10 @@ group :development do
   gem 'web-console', '~> 2.0'
 end
 
+gem 'capistrano', '~> 3.4.0'
+gem 'capistrano-rails', '~> 1.2'	
+gem 'capistrano-rbenv', '~> 2.0', '>= 2.0.4'
 
-group :development do
-	gem 'capistrano', '~> 3.4.0'
-	gem 'capistrano-rails', '~> 1.2'	
-	gem 'capistrano-rbenv', '~> 2.0', '>= 2.0.4'
-end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
