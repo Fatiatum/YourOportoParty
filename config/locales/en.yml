@@ -1,0 +1,119 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  catalog:
+    index:
+      title: "Experiences"
+      none:  "None Product Available"
+      edit: "Edit"
+      destroy: "Destroy"
+
+
+  about:
+    index:
+      about: "About Us"
+
+  faq:
+    index:
+      title: "FAQ"
+      none:  "None Question Available"
+
+  products:
+    show:
+      none:  "None Experience Available"
+      product_name: "Program"
+      package_type: "Package Type"
+      experience: "Experience"
+      price: "Price"
+      edit: "Edit"
+      destroy: "Destroy"
+      book: "Book this experience"
+      new: "New Experience"
+
+  contacts:
+    index:
+      title:   "Get in touch"
+      phone:   "Phone Number"
+      email:   "E-mail"
+      address: "Address"
+    form:
+      send: "Send"
+
+  experiences:
+    form:
+      day: "Day"
+      night: "Night"
+      full_day: "Full Day"
+      lux: "Lux"
+      standard: "Standard"
+      budget: "Budget"
+
+  orders:
+    new:
+      order:   "Make Order"
+
+  shared:
+    footer:
+      follow: "Follow Us Here"
+      rights: "All Rights reserved to"
+    experience_form:
+      contact: "Contact us"
+      create:  "Create your own experience"
+      msg:     "Tell us the kind of experience you would want to live"
+      close:   "Close"
+      send:    "Send"
+    navbar:
+      catalog:  "Catalog"
+      faq:      "FAQ"
+      about:    "About"
+      contacts: "Contacts"
+    admin_navbar:
+      catalog:  "Catalog"
+      faq:      "FAQ"
+      about:    "About"
+      contacts: "Contacts"
+      home_edit: "Edit Home"
+      admin_edit: "Edit Admin"
+      catalog_edit: "Edit Catalog"
+      catalog_view: "View Catalog"
+      faq_edit: "Edit FAQ"
+      faq_view: "View FAQ"
+      about_edit: "Edit About"
+      about_view: "View About"
+      contacts_edit: "Edit Contacts"
+      contacts_view: "View Contacts"
+      product: "Product"
+      product_edit: "Edit Product"
+      product_new: "New Product"
+
+  activerecord:
+    attributes:
+      catalog: 
+        name:      "Name"
+        from_mail: "E-mail"
+        subject:   "Subject"
+        msg:       "Message"
+      contacts: 
+        name:      "Name"
+        from_mail: "E-mail"
+        subject:   "Subject"
+        msg:       "Message"

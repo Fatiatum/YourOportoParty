@@ -1,0 +1,88 @@
+<%= render 'shared/header' %>
+
+<!--NAVBAR-->
+<header id="HOME" style="background-position: 50% -125px;">
+	<div class="section_overlay">
+		<% if current_user%>
+			<%= render 'shared/admin_navbar'%>
+		<% else %>
+			<%= render 'shared/navbar' %>
+		<% end %>
+	</div>        
+</header>
+<!--/NAVBAR--> 
+
+<!--Product-->
+<section class="product_area" id="PRODUCT">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="product_title wow fadeInUp animated">
+					<% if @locale == 'pt'%>
+						<h2><%= @product.name_pt %></h2>
+					<%else%>
+						<h2><%= @product.name_en %></h2>
+					<% end %>
+					<%= image_tag "shape.png" %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4  wow fadeInLeft animated">
+				<div class="single_image">
+					<% if @product.image.blank? %>
+                        <%= image_tag "logo.png" %>
+                    <% else %>
+                        <%= image_tag @product.image %>
+                    <% end %>
+					
+				</div>
+			</div>
+			
+			<table>
+				<thead>
+					<tr>
+						<th class="col-md-2"><%= t ".product_name" %></th>
+						<th class="col-md-2"><%= t ".package_type" %></th>
+						<th class="col-md-2"><%= t ".experience" %></th>
+						<th class="col-md-2"><%= t ".price" %></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @experiences.each do |experience| %>
+					<tr>	
+						<% if @locale == 'pt'%>
+							<td class="col-md-2"><%= experience.program_type %></td>
+							<td class="col-md-2"><%= experience.package_type %></td>
+							<td class="col-md-2"><%= experience.description_pt %></td>
+						<%else%>
+							<td class="col-md-2"><%= experience.program_type %></td>
+							<td class="col-md-2"><%= experience.package_type %></td>
+							<td class="col-md-2"><%= experience.description_en %></td>
+						<% end %>
+						<td class="col-md-2"><%= experience.price %></td>
+						<% if current_user%>
+							<td class="btn btn-default"><%= link_to t(".edit"), edit_experience_path(experience) %></td>
+							<td class="btn btn-default"><%= link_to t(".destroy"), experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						<% end %>
+						<td class="btn btn-default"><%= link_to t(".book"), new_order_path(:experience_id => experience.id) %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			
+			<% if current_user%>
+				<p class="btn btn-default">
+					<%= link_to t(".new"), new_experience_path(:Product_id => @product.to_param)%>
+				</p>
+			<% end %>	
+			
+		</div>
+	</div>
+</section>
+<!--/Product-->
+
+<%= render 'shared/footer' %> 

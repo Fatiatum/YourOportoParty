@@ -1,0 +1,74 @@
+<section class="call_to_action">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 wow fadeInLeft animated">
+                <div class="left">
+                    <% if @locale == 'pt'%>
+                        <h2><%= @catalog.exp_title_pt %></h2>
+                        <p><%= @catalog.exp_text_pt %></p>
+                    <%else%>
+                        <h2><%= @catalog.exp_title_en %></h2>
+                        <p><%= @catalog.exp_text_en %></p>
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-1 wow fadeInRight animated">
+                <div class="baton">
+                    <a href="#CONTACT">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contact_modal"><%= t ".contact" %></button>
+                    </a>    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div id="contact_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1><%= t ".create" %></h1>
+        <p><%= t ".msg" %></p>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12  wow fadeInLeft animated" id="formulario">
+                <%= form_for @cont do |f| %>
+
+				  <p>
+				    <%= f.label Catalog.human_attribute_name(:name) %><br>
+				    <%= f.text_field :name,class: "form-control" %>
+				  </p>
+
+				  <p>
+				    <%= f.label Catalog.human_attribute_name(:from_mail) %><br>
+				    <%= f.text_field :from_mail,class: "form-control" %>
+				  </p>
+				 
+				  <p>
+				    <%= f.label Catalog.human_attribute_name(:subject) %><br>
+				    <%= f.text_field :subject,class: "form-control" %>
+				  </p>
+
+				  <p>
+				    <%= f.label Catalog.human_attribute_name(:msg) %><br>
+				    <%= f.text_area :msg,class: "form-control",rows: "5", cols: "10" %>
+				  </p>
+				  <p>
+				    <%= f.submit t ".send" %>
+				  </p>
+				<% end %>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t ".close" %></button>
+    </div>
+</div>
+
+</div>
+</div>

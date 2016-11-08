@@ -1,0 +1,25 @@
+<!--FOOTER-->
+<footer>
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center   wow fadeInUp animated">
+                    <div class="social">
+                        <h2><%= t ".follow" %></h2>
+                        <ul class="icon_list">
+                            <% @admin = User.last%>
+                            <li><%= link_to '<i class="fa fa-facebook"></i>'.html_safe, "http://#{@admin.fb_link}"%></li>
+                            <li><%= link_to '<i class="fa fa-twitter"></i>'.html_safe, "http://#{@admin.tw_link}"%></li>
+                            <li><%= link_to '<i class="fa fa-instagram"></i>'.html_safe, "http://#{@admin.insta_link}"%></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--/FOOTER-->
+
+
+</body>
+</html>

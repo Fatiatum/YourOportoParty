@@ -1,0 +1,78 @@
+    <%= render 'shared/header' %>
+
+    <!--NAVBAR-->
+    <header id="HOME" style="background-position: 50% -125px;">
+        <div class="section_overlay">
+             <% if current_user%>
+                <%= render 'shared/admin_navbar'%>
+            <% else %>
+                <%= render 'shared/navbar' %>
+            <% end %>
+        </div>        
+    </header>
+    <!--/NAVBAR-->  
+    
+    <!--CATALOG-->
+    <section class="work_area" id="WORK">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="work_title  wow fadeInUp animated">
+                        <h1><%= t ".title" %></h1>
+                        <%= image_tag "shape.png" %>
+                        <% if @locale == 'pt'%>
+                        <p><%= @catalog.text_pt %></p>
+                        <%else%>
+                        <p><%= @catalog.text_en %></p>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <% if @products.any? %>
+                <% @products.each do |product| %>
+                <div class="col-md-4 no_padding portfolio-item romantic">
+                    <% if current_user%>
+                        <p class="btn btn-default">
+                            <%= link_to t(".edit"), edit_product_path(product) %>
+                        </p>
+                        <p class="btn btn-default">
+                            <%= link_to t(".destroy"), product, method: :delete, data: { confirm: 'Are you sure?' } %>
+                        </p>
+                    <% end %>
+                    <div class="single_image">
+                        <% if product.image.blank? %>
+                            <%= image_tag "logo.png" %>
+                        <% else %>
+                            <%= image_tag product.image %>
+                        <% end %>
+                        <% if @locale == 'pt'%>
+                        <div class="image_overlay">
+                            <%= link_to(product) do %>
+                            <h2 id="product-title"><%= product.name_pt %></h2>
+                            <% end %>
+                            <h4><%= product.description_pt %></h4>
+                        </div>
+                        <%else%>
+                        <div class="image_overlay">
+                            <%= link_to(product) do %>
+                            <h2 id="product-title"><%= product.name_en %></h2>
+                            <% end %>
+                            <h4><%= product.description_en %></h4>
+                        </div>
+                        <% end %>
+                    </div>
+                </div>
+                <% end %>
+                <% else %>
+                <p><%= t ".none" %></p>
+                <% end %>
+            </div>          
+        </div>
+    </section>
+    <%= render 'shared/experience_form' %> 
+    <!--/CATALOG-->
+    
+    <%= render 'shared/footer' %> 
